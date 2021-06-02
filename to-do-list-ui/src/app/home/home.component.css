@@ -1,0 +1,16 @@
+.title {
+    font-size: 150%;
+    font-weight: bold;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+}
+
+.home--body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(168, 168, 226);
+    justify-content: flex-start;
+    align-items: flex-start;
+}

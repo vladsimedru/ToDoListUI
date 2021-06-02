@@ -1,0 +1,19 @@
+.toDoList--name {
+    font-weight: bold;
+    font-size: large;
+}
+
+mat-card {
+    margin: 10px !important;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.button--delete {
+    color: black;
+    cursor: pointer;
+}

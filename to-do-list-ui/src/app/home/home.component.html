@@ -1,0 +1,16 @@
+<div class="title">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    Home</div>
+<div class="home--body">
+    <div *ngFor='let toDoList of toDoLists'>
+        <app-toDoList [toDoList]='toDoList'>
+        </app-toDoList>
+    </div>
+    <div>
+        <form class="example-form" (ngSubmit)='addToDoList(toDoListName)'>
+            <mat-form-field class="example-full-width">
+                <mat-label>Add a to do list</mat-label>
+                <input matInput placeholder="Ex. Home to do list" [(ngModel)]="toDoListName" name="taskNameInput">
+            </mat-form-field>
+        </form>
+    </div>
