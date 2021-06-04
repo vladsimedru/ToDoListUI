@@ -1,18 +1,24 @@
-<mat-card class="example-card">
-
-    <mat-card-title> {{toDoList.name}}</mat-card-title>
+<mat-card class="example-card" [style.background-color]="toDoList.color" [class.color]="toDoList.color">
+    <mat-card-title class="list--title">
+        {{toDoList.name}}
+        <button mat-raised-button [routerLink]="['/to-do-lists',toDoList.id]">Edit</button>
+    </mat-card-title>
     <mat-card-content>
-        <div *ngIf="toDoList.tasks.length>0">
-            <mat-selection-list *ngFor="let task of toDoList.tasks">
-                <mat-list-option>
-                    {{task.description}}
-                </mat-list-option>
-            </mat-selection-list>
+        <div *ngIf="toDoList.tasks.length>0" class="list">
+            <mat-list name="selectedOptions" *ngFor="let task of toDoList.tasks" #tasks>
+                <mat-list-item name="options">
+                    <div class="task-row">
+                        <mat-checkbox class="checkbox" name="checkbox" [(ngModel)]="task.status" (ngModelChange)="onTaskStatusChange(task.id,$event)" class="example-margin" [checked]="task.status">
+                        </mat-checkbox>
+                        <p class="task-description" [style.textDecoration]="task.status?'line-through':''">{{task.description}}</p>
+                    </div>
+                </mat-list-item>
+            </mat-list>
         </div>
         <div *ngIf="toDoList.tasks.length==0">No tasks yet</div>
-        <form class="example-form" (ngSubmit)='addToDoListTask(toDoList.id,taskDescription)'>
-            <mat-form-field class="example-full-width">
-                <mat-label>Add a task</mat-label>
+        <form name="new-task-form" class="example-form" (ngSubmit)='addToDoListTask(toDoList.id,taskDescription)'>
+            <mat-form-field class="new-task-input">
+                <mat-label for="new-task-form">Add a task</mat-label>
                 <input matInput placeholder="Ex. Clean my room" [(ngModel)]="taskDescription" name="taskDescriptionInput">
             </mat-form-field>
         </form>
@@ -22,9 +28,9 @@
             <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
                 <mat-icon (click)="changeFavorite()">{{favoritePressed?"favorite":"favorite_outlined"}}</mat-icon>
               </button>
-            <button mat-icon-button class="button--delete" color="warn" aria-label="Example icon button with a heart icon">
+            <button mat-icon-button class="button--delete" color="warn" (click)="deleteToDoListById(toDoList.id)" aria-label="Example icon button with a heart icon">
                 <mat-icon>delete</mat-icon>
-              </button>
+            </button>
         </div>
     </mat-card-actions>
 </mat-card>

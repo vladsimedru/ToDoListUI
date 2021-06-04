@@ -1,1 +1,16 @@
-<app-home>
+<div class="noScrollable">
+    <mat-toolbar color="primary" class="toolbar">
+        <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink='/home' class="toolbar">Home</button>
+            <button mat-menu-item routerLink='/to-do-lists/favorites'>Favorites</button>
+        </mat-menu>
+        <span>To Do List</span>
+    </mat-toolbar>
+    <div class="body">
+        <router-outlet>
+        </router-outlet>
+    </div>
+</div>

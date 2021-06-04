@@ -4,4 +4,5 @@ export interface IToDoList{
     id:number;
     name:string;
     tasks:ITask[];
+    color:string;
 }

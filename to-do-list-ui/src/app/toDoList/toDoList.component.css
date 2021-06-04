@@ -5,6 +5,24 @@
 
 mat-card {
     margin: 10px !important;
+    width: 300px;
+    height: auto;
+}
+
+.list {
+    overflow: auto;
+    max-height: calc(100vh - 300px);
+}
+
+.list--title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-task-input {
+    margin-top: 5%;
+    width: 100%;
 }
 
 .button-container {
@@ -16,4 +34,19 @@ mat-card {
 .button--delete {
     color: black;
     cursor: pointer;
+}
+
+.input--form {
+    width: max-content;
+}
+
+.task-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    word-break: break-word;
+}
+
+.task-description {
+    margin-left: 2vh;
 }
